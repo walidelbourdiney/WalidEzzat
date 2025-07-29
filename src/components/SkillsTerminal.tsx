@@ -1,75 +1,111 @@
 import React from "react";
+import { motion } from "framer-motion";
+import TypingAnimation from "./TypingAnimation";
+
+type SkillLevel = "Beginner" | "Intermediate" | "Advanced";
+
+const levelTag = (level: SkillLevel) => {
+  switch (level) {
+    case "Advanced":
+      return <span className="text-xs text-green-400">🟢 Advanced</span>;
+    case "Intermediate":
+      return <span className="text-xs text-yellow-300">🟡 Intermediate</span>;
+    case "Beginner":
+      return <span className="text-xs text-blue-400">🔵 Beginner</span>;
+  }
+};
 
 const skills = [
   {
     category: "Frontend",
     items: [
-      { name: "React 19", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "Tailwind CSS", level: 85 },
-      { name: "HTML5 / CSS3", level: 90 },
-      { name: "Responsive Design", level: 85 },
-      { name: "UI/UX", level: 75 },
+      { name: "React 19", level: "Advanced" },
+      { name: "TypeScript", level: "Beginner" },
+      { name: "Tailwind CSS", level: "Advanced" },
+      { name: "HTML5 / CSS3", level: "Advanced" },
+      { name: "Responsive Design", level: "Advanced" },
+      { name: "UI/UX", level: "Intermediate" },
     ],
   },
   {
     category: "State Management",
     items: [
-      { name: "Zustand", level: 80 },
-      { name: "Context API", level: 75 },
-      { name: "React Query", level: 70 },
+      { name: "Zustand", level: "Advanced" },
+      { name: "Context API", level: "Beginner" },
+      { name: "React Query", level: "Intermediate" },
     ],
   },
   {
     category: "Tools & Workflow",
     items: [
-      { name: "Vite", level: 85 },
-      { name: "Git / GitHub", level: 85 },
-      { name: "DevTools & Debugging", level: 80 },
-      { name: "i18next / RTL", level: 70 },
-      { name: "Formik", level: 65 },
+      { name: "Vite", level: "Advanced" },
+      { name: "Git / GitHub", level: "Advanced" },
+      { name: "DevTools & Debugging", level: "Intermediate" },
+      { name: "i18next / RTL", level: "Intermediate" },
+      { name: "Formik", level: "Intermediate" },
     ],
   },
   {
     category: "Other",
     items: [
-      { name: "RESTful APIs", level: 85 },
-      { name: "WordPress", level: 60 },
-      { name: "Linux Basics", level: 60 },
+      { name: "RESTful APIs", level: "Advanced" },
+      { name: "WordPress", level: "Intermediate" },
+      { name: "Linux Basics", level: "Intermediate" },
     ],
   },
   {
     category: "Learning",
     items: [
-      { name: "Next.js", level: 40 },
-      { name: "AI APIs (Cohere, HuggingFace)", level: 35 },
+      { name: "Next.js", level: "Beginner" },
+      { name: "AI APIs", level: "Beginner" },
     ],
   },
-];
+] as {
+  category: string;
+  items: { name: string; level: SkillLevel }[];
+}[];
+
+const barVariants = {
+  hidden: { width: 0 },
+  visible: (level: SkillLevel) => ({
+    width:
+      level === "Advanced" ? "100%" : level === "Intermediate" ? "66%" : "33%",
+    transition: { duration: 1, ease: "easeOut" },
+  }),
+};
 
 const SkillsTerminal: React.FC = () => {
   return (
     <div className="font-mono text-terminal-green w-full px-4 sm:px-6">
       {skills.map((cat) => (
-        <div key={cat.category} className="mb-8 max-w-2xl mx-auto">
-          <div className="text-accent-green font-bold mb-2">
-            $ npm list --{cat.category.toLowerCase().replace(/ /g, "-")}
-          </div>
+        <div key={cat.category} className="mb-10 max-w-2xl mx-auto">
+          {/* Animated Header */}
+          <TypingAnimation
+            lines={[
+              `$ npm list --${cat.category.toLowerCase().replace(/ /g, "-")}`,
+            ]}
+            typingSpeed={30}
+            className="text-accent-green font-bold mb-3 text-sm sm:text-base"
+          />
+
           {cat.items.map((skill) => (
             <div
               key={skill.name}
-              className="mb-2 flex flex-col sm:flex-row sm:items-center sm:gap-2"
+              className="mb-2 flex flex-col sm:flex-row sm:items-center sm:gap-3"
             >
-              <span className="w-full sm:w-40 inline-block">{skill.name}</span>
+              <span className="w-full sm:w-40">{skill.name}</span>
               <div className="w-full flex-1 bg-terminal-dark-alt rounded h-3 overflow-hidden mt-1 sm:mt-0">
-                <div
+                <motion.div
                   className="bg-terminal-green h-3 rounded"
-                  style={{ width: `${skill.level}%` }}
+                  custom={skill.level}
+                  initial="hidden"
+                  animate="visible"
+                  variants={barVariants}
                 />
               </div>
-              <span className="text-xs ml-auto mt-1 sm:mt-0 sm:ml-2">
-                {skill.level}%
-              </span>
+              <div className="mt-1 sm:mt-0 sm:ml-2">
+                {levelTag(skill.level)}
+              </div>
             </div>
           ))}
         </div>

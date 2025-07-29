@@ -1,43 +1,86 @@
-import React, { useState } from 'react';
-import TerminalWindow from '../components/TerminalWindow';
-import ProjectCard from '../components/ProjectCard';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import TerminalWindow from "../components/TerminalWindow";
+import ProjectCard from "../components/ProjectCard";
+import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: 'Terminal Portfolio',
-    description: 'A modern terminal-inspired portfolio built with React, TypeScript, and Tailwind CSS.',
-    tech: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'],
-    github: 'https://github.com/walid-ezzat/terminal-portfolio',
-    demo: '#',
+    title: "Mood Nest",
+    description:
+      "AI-powered mental wellness companion. Analyze journal entries using Cohere AI to help users understand emotional patterns.",
+    tech: [
+      "React 19",
+      "Zustand",
+      "Tailwind",
+      "Vite",
+      "Cohere AI",
+      "Recharts",
+      "APIs",
+    ],
+    github: "https://github.com/walidelbourdiney/MOOD-NEST",
+    demo: "https://mood-nest.vercel.app",
   },
   {
-    title: 'AI Chatbot',
-    description: 'Conversational AI chatbot with OpenAI API and custom UI.',
-    tech: ['React', 'OpenAI', 'Vite'],
-    github: 'https://github.com/walid-ezzat/ai-chatbot',
-    demo: '#',
+    title: "Admin Portal",
+    description:
+      "Bilingual healthcare admin dashboard with i18n, secure auth, protected routes, and RTL/LTR layout support.",
+    tech: [
+      "React 19",
+      "Tailwind",
+      "Zustand",
+      "React Query",
+      "Formik",
+      "i18next",
+      "Vite",
+      "APIs",
+    ],
+    github: "https://github.com/walidelbourdiney/portal",
+    demo: "https://portal-sooty-pi.vercel.app/",
   },
   {
-    title: 'Blog Platform',
-    description: 'Minimal blog platform with Markdown support and Hashnode integration.',
-    tech: ['React', 'Markdown', 'Hashnode'],
-    github: 'https://github.com/walid-ezzat/blog-platform',
-    demo: '#',
+    title: "Chef Welly",
+    description:
+      "AI-powered recipe recommendation system using Hugging Face Mixtral model with markdown formatting.",
+    tech: ["React 19", "Vite", "HuggingFace", "Markdown", "APIs"],
+    github: "https://github.com/walidelbourdiney/chef-welly",
   },
   {
-    title: 'UI Kit',
-    description: 'Reusable UI component kit for rapid prototyping.',
-    tech: ['React', 'Storybook', 'Tailwind'],
-    github: 'https://github.com/walid-ezzat/ui-kit',
-    demo: '#',
+    title: "Meme Generator",
+    description:
+      "A fun meme generator using Imgflip API with live text editing and responsive design.",
+    tech: ["React", "Vite", "Imgflip API", "CSS", "APIs"],
+    github: "https://github.com/walidelbourdiney/MemeGenerator",
+  },
+  {
+    title: "Weather App",
+    description:
+      "Responsive weather app using OpenWeather API with emoji icons, loading states, and error handling.",
+    tech: ["JavaScript", "HTML", "CSS", "OpenWeather API", "APIs"],
+    github: "https://github.com/walidelbourdiney/WEATHER-APP--native-JS-",
+    demo: "https://weather-app-native-js.vercel.app/",
+  },
+  {
+    title: "Modern Web Calculator",
+    description:
+      "JavaScript-powered calculator with decimal, operator logic, input validation, and modern UI.",
+    tech: ["JavaScript", "HTML", "CSS"],
+    github: "https://github.com/walidelbourdiney/Calculator",
   },
 ];
 
-const techFilters = ['All', 'React', 'AI', 'Tailwind', 'OpenAI', 'Markdown'];
+const techFilters = [
+  "All",
+  "React",
+  "JavaScript",
+  "Tailwind",
+  "AI",
+  "Vite",
+  "APIs",
+  "Markdown",
+];
 
 const Projects: React.FC = () => {
-  const [active, setActive] = useState('All');
+  const [active, setActive] = useState("All");
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-terminal-dark py-8">
       <TerminalWindow title="user@walid-portfolio:~/projects$">
@@ -45,7 +88,11 @@ const Projects: React.FC = () => {
           {techFilters.map((filter) => (
             <button
               key={filter}
-              className={`px-3 py-1 rounded font-mono text-sm border border-terminal-green/40 transition-colors duration-150 ${active === filter ? 'bg-terminal-green text-black' : 'bg-terminal-dark-alt text-terminal-green hover:bg-terminal-green/20'}`}
+              className={`px-3 py-1 rounded font-mono text-sm border border-terminal-green/40 transition-colors duration-150 ${
+                active === filter
+                  ? "bg-terminal-green text-black"
+                  : "bg-terminal-dark-alt text-terminal-green hover:bg-terminal-green/20"
+              }`}
               onClick={() => setActive(filter)}
             >
               {filter}
@@ -55,11 +102,19 @@ const Projects: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          {projects.map((p) => (
-            <ProjectCard key={p.title} {...p} />
-          ))}
+          {projects
+            .filter((p) =>
+              active === "All"
+                ? true
+                : p.tech.some((tech) =>
+                    tech.toLowerCase().includes(active.toLowerCase())
+                  )
+            )
+            .map((p) => (
+              <ProjectCard key={p.title} {...p} />
+            ))}
         </motion.div>
       </TerminalWindow>
     </div>
