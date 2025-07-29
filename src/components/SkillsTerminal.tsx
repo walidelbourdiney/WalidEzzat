@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import type { Variants, TargetAndTransition } from "framer-motion";
 import TypingAnimation from "./TypingAnimation";
 
 type SkillLevel = "Beginner" | "Intermediate" | "Advanced";
@@ -65,12 +66,12 @@ const skills = [
   items: { name: string; level: SkillLevel }[];
 }[];
 
-const barVariants = {
+const barVariants: Variants = {
   hidden: { width: 0 },
-  visible: (level: SkillLevel) => ({
+  visible: (level: SkillLevel): TargetAndTransition => ({
     width:
       level === "Advanced" ? "100%" : level === "Intermediate" ? "66%" : "33%",
-    transition: { duration: 1, ease: "easeOut" },
+    transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] }, // use easing array
   }),
 };
 
