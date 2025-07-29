@@ -25,7 +25,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({ children, title }) => (
         {title || "user@Walid-Ezzat:~$"}
       </span>
     </div>
-    <div className="p-8">{children}</div>
+    <div className="px-4 sm:px-6 md:px-8 py-8 w-full">{children}</div>
   </motion.div>
 );
 
