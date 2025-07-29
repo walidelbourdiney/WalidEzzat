@@ -1,13 +1,13 @@
-import React from 'react';
-import TerminalWindow from '../components/TerminalWindow';
-import TypingAnimation from '../components/TypingAnimation';
-import { motion } from 'framer-motion';
+import React from "react";
+import TerminalWindow from "../components/TerminalWindow";
+import TypingAnimation from "../components/TypingAnimation";
+import { motion } from "framer-motion";
 
 const heroLines = [
-  'Hello World! I\'m Walid Ezzat',
-  'Junior Frontend Developer',
-  'Where Engineering Meets Creativity',
-  'Building beautiful, accessible web experiences',
+  "Hello World! I'm Walid Ezzat.",
+  "Frontend Developer with an engineer’s mind & artist’s eye.",
+  "React. TypeScript. TailwindCSS. and more.",
+  "Let’s build something unforgettable together!",
 ];
 
 const Home: React.FC = () => {
@@ -16,17 +16,18 @@ const Home: React.FC = () => {
       {/* Animated background shimmer */}
       <motion.div
         animate={{
-          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}
         transition={{
           duration: 20,
-          ease: 'linear',
+          ease: "linear",
           repeat: Infinity,
         }}
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'linear-gradient(120deg, #0a0e0a, #101c10, #1a1d1a, #101c10, #0a0e0a)',
-          backgroundSize: '400% 400%',
+          background:
+            "linear-gradient(120deg, #0a0e0a, #101c10, #1a1d1a, #101c10, #0a0e0a)",
+          backgroundSize: "400% 400%",
         }}
       />
       <TerminalWindow>
@@ -36,16 +37,21 @@ const Home: React.FC = () => {
             typingSpeed={40}
             className="text-lg md:text-xl text-terminal-green text-center"
           />
-          <motion.button
-            whileHover={{ scale: 1.05, textShadow: "0 0 8px #00ff41", boxShadow: "0 0 15px #00ff41" }}
+          <motion.a
+            whileHover={{
+              scale: 1.05,
+              textShadow: "0 0 8px #00ff41",
+              boxShadow: "0 0 15px #00ff41",
+            }}
             whileTap={{ scale: 0.95 }}
-            className="mt-8 px-6 py-2 border-2 border-terminal-green text-terminal-green font-bold text-lg bg-transparent transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-terminal-green"
+            href="mailto:walidelbourdiney25@gmail.com"
+            className="mt-8 px-6 py-2 border-2 border-terminal-green text-terminal-green font-bold text-lg bg-transparent transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-terminal-green inline-block"
           >
             <span className="flex items-center gap-2">
               <span className="text-xl">&gt;</span>
               <span>Initiate Contact</span>
             </span>
-          </motion.button>
+          </motion.a>
         </div>
       </TerminalWindow>
     </div>
