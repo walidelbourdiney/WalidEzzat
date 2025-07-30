@@ -37,7 +37,7 @@ const Home: React.FC = () => {
         <div className="flex flex-col items-center gap-4 sm:gap-6 w-full max-w-full">
           <TypingAnimation
             lines={heroLines}
-            typingSpeed={40}
+            typingSpeed={50}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-terminal-green text-center leading-relaxed"
           />
           <motion.a
