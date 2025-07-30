@@ -17,13 +17,13 @@ const AboutBio: React.FC = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="w-full max-w-2xl mx-auto flex flex-col items-center gap-6 px-4 sm:px-6 text-center md:text-left"
+      className="w-full max-w-2xl mx-auto flex flex-col items-center gap-4 sm:gap-6 px-2 sm:px-4 md:px-6 text-center"
     >
       {/* Avatar */}
       <motion.div
         whileHover={{ scale: 1.05, rotate: 1 }}
         transition={{ type: "spring", stiffness: 200 }}
-        className="w-36 h-36 md:w-44 md:h-44 rounded-full bg-terminal-green/10 border-4 border-terminal-green shadow-lg flex items-center justify-center animate-pulse-glow overflow-hidden"
+        className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full bg-terminal-green/10 border-2 sm:border-4 border-terminal-green shadow-lg flex items-center justify-center animate-pulse-glow overflow-hidden flex-shrink-0"
       >
         <img
           src={me}
@@ -37,7 +37,7 @@ const AboutBio: React.FC = () => {
       <TypingAnimation
         lines={bioLines}
         typingSpeed={30}
-        className="text-terminal-green text-md md:text-lg leading-relaxed font-mono"
+        className="text-terminal-green text-sm sm:text-base md:text-lg leading-relaxed font-mono max-w-full"
       />
 
       {/* Resume Button */}
@@ -51,7 +51,7 @@ const AboutBio: React.FC = () => {
         href={cv}
         download
         aria-label="Download resume"
-        className="mt-4 px-6 py-3 rounded-lg bg-terminal-green text-black font-mono font-bold shadow-lg hover:bg-accent-green transition-colors duration-200 border-2 border-terminal-green ring-2 ring-terminal-green/40 animate-pulse-glow inline-block"
+        className="mt-2 sm:mt-4 px-4 sm:px-6 py-2 sm:py-3 rounded-lg bg-terminal-green text-black font-mono font-bold shadow-lg hover:bg-accent-green transition-colors duration-200 border-2 border-terminal-green ring-2 ring-terminal-green/40 animate-pulse-glow inline-block text-sm sm:text-base whitespace-nowrap"
       >
         $ download resume
       </motion.a>

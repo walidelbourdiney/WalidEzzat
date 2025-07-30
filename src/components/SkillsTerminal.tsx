@@ -77,34 +77,34 @@ const barVariants: Variants = {
 
 const SkillsTerminal: React.FC = () => {
   return (
-    <div className="font-mono text-terminal-green w-full px-4 sm:px-6">
+    <div className="font-mono text-terminal-green w-full px-2 sm:px-4 md:px-6">
       {skills.map((cat) => (
-        <div key={cat.category} className="mb-10 max-w-2xl mx-auto">
+        <div key={cat.category} className="mb-6 sm:mb-10 max-w-2xl mx-auto">
           {/* Animated Header */}
           <TypingAnimation
             lines={[
               `$ npm list --${cat.category.toLowerCase().replace(/ /g, "-")}`,
             ]}
             typingSpeed={30}
-            className="text-accent-green font-bold mb-3 text-sm sm:text-base"
+            className="text-accent-green font-bold mb-3 text-sm sm:text-base break-words"
           />
 
           {cat.items.map((skill) => (
             <div
               key={skill.name}
-              className="mb-2 flex flex-col sm:flex-row sm:items-center sm:gap-3"
+              className="mb-3 sm:mb-2 flex flex-col sm:flex-row sm:items-center sm:gap-3"
             >
-              <span className="w-full sm:w-40">{skill.name}</span>
-              <div className="w-full flex-1 bg-terminal-dark-alt rounded h-3 overflow-hidden mt-1 sm:mt-0">
+              <span className="w-full sm:w-40 text-sm sm:text-base break-words mb-1 sm:mb-0">{skill.name}</span>
+              <div className="w-full flex-1 bg-terminal-dark-alt rounded h-2 sm:h-3 overflow-hidden">
                 <motion.div
-                  className="bg-terminal-green h-3 rounded"
+                  className="bg-terminal-green h-2 sm:h-3 rounded"
                   custom={skill.level}
                   initial="hidden"
                   animate="visible"
                   variants={barVariants}
                 />
               </div>
-              <div className="mt-1 sm:mt-0 sm:ml-2">
+              <div className="mt-1 sm:mt-0 sm:ml-2 flex-shrink-0">
                 {levelTag(skill.level)}
               </div>
             </div>
