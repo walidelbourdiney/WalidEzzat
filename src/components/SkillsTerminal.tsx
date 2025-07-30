@@ -39,11 +39,13 @@ const skills = [
   {
     category: "Tools & Workflow",
     items: [
+      { name: "Linux", level: "Intermediate" },
       { name: "Vite", level: "Advanced" },
       { name: "Git / GitHub", level: "Advanced" },
       { name: "DevTools & Debugging", level: "Intermediate" },
       { name: "i18next / RTL", level: "Intermediate" },
       { name: "Formik", level: "Intermediate" },
+      { name: "Figma", level: "Beginner" },
     ],
   },
   {
@@ -51,7 +53,6 @@ const skills = [
     items: [
       { name: "RESTful APIs", level: "Advanced" },
       { name: "WordPress", level: "Intermediate" },
-      { name: "Linux Basics", level: "Intermediate" },
     ],
   },
   {
@@ -94,7 +95,9 @@ const SkillsTerminal: React.FC = () => {
               key={skill.name}
               className="mb-3 sm:mb-2 flex flex-col sm:flex-row sm:items-center sm:gap-3"
             >
-              <span className="w-full sm:w-40 text-sm sm:text-base break-words mb-1 sm:mb-0">{skill.name}</span>
+              <span className="w-full sm:w-40 text-sm sm:text-base break-words mb-1 sm:mb-0">
+                {skill.name}
+              </span>
               <div className="w-full flex-1 bg-terminal-dark-alt rounded h-2 sm:h-3 overflow-hidden">
                 <motion.div
                   className="bg-terminal-green h-2 sm:h-3 rounded"
