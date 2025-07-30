@@ -82,13 +82,13 @@ const techFilters = [
 const Projects: React.FC = () => {
   const [active, setActive] = useState("All");
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-terminal-dark py-8">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-terminal-dark py-4 sm:py-8 w-full max-w-full">
       <TerminalWindow title="user@walid-portfolio:~/projects$">
-        <div className="mb-4 flex gap-2">
+        <div className="mb-4 flex flex-wrap gap-2 w-full">
           {techFilters.map((filter) => (
             <button
               key={filter}
-              className={`px-3 py-1 rounded font-mono text-sm border border-terminal-green/40 transition-colors duration-150 ${
+              className={`px-2 sm:px-3 py-1 rounded font-mono text-xs sm:text-sm border border-terminal-green/40 transition-colors duration-150 whitespace-nowrap ${
                 active === filter
                   ? "bg-terminal-green text-black"
                   : "bg-terminal-dark-alt text-terminal-green hover:bg-terminal-green/20"
@@ -103,6 +103,7 @@ const Projects: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
+          className="w-full"
         >
           {projects
             .filter((p) =>

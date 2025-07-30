@@ -37,11 +37,11 @@
    ====================== */
 @layer base {
   html {
-    @apply font-mono bg-bg-dark text-terminal-green;
+    @apply font-mono bg-bg-dark text-terminal-green overflow-x-hidden;
   }
 
   body {
-    @apply font-sans;
+    @apply font-sans overflow-x-hidden;
   }
 
   /* Custom font utilities */
@@ -72,6 +72,23 @@
 
   .text-warning {
     color: var(--color-warning);
+  }
+
+  /* Responsive text utilities */
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  /* Ensure proper text wrapping */
+  .text-wrap-balance {
+    text-wrap: balance;
+  }
+
+  /* Prevent horizontal overflow */
+  .overflow-safe {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 }
 
@@ -146,5 +163,24 @@
       transform: skew(0.3deg);
     }
     /* ... other keyframe steps ... */
+  }
+
+  /* Responsive container utilities */
+  .container-responsive {
+    @apply w-full max-w-full px-2 sm:px-4 md:px-6 lg:px-8;
+  }
+
+  /* Safe flex utilities */
+  .flex-safe {
+    @apply flex min-w-0;
+  }
+
+  .flex-col-safe {
+    @apply flex flex-col min-w-0;
+  }
+
+  /* Text overflow utilities */
+  .text-overflow-safe {
+    @apply break-words overflow-hidden;
   }
 }

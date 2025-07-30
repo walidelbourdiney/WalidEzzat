@@ -41,17 +41,17 @@ const TypingAnimation: React.FC<TypingAnimationProps> = ({ lines, typingSpeed = 
   }, [charIdx, lineIdx, lines, typingSpeed]);
 
   return (
-    <div className={`whitespace-pre font-mono ${className || ''}`.trim()}>
+    <div className={`whitespace-pre-wrap font-mono break-words ${className || ''}`.trim()}>
       {displayed.map((line, i) => (
-        <div key={i} className="relative flex items-center">
-          <span className="glitch" data-text={line}>
+        <div key={i} className="relative flex items-start">
+          <span className="glitch break-words" data-text={line}>
             {line}
           </span>
           {i === displayed.length - 1 && !done && (
             <AnimatePresence>
               <motion.span
                 key="cursor"
-                className="inline-block w-3 h-5 bg-terminal-green ml-1"
+                className="inline-block w-2 sm:w-3 h-4 sm:h-5 bg-terminal-green ml-1 flex-shrink-0"
                 initial={{ opacity: 1 }}
                 animate={{ opacity: [1, 0.2, 1] }}
                 exit={{ opacity: 0 }}

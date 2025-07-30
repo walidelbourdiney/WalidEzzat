@@ -23,21 +23,21 @@ const Layout: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-terminal-green font-mono">
       {/* Navbar */}
-      <nav className="w-full border-b border-terminal-green/30 bg-black/80 backdrop-blur px-6 py-4">
+      <nav className="w-full border-b border-terminal-green/30 bg-black/80 backdrop-blur px-4 sm:px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="text-lg hidden sm:block">
-            <Link to="/" className="hover:text-accent-green">
+          <div className="text-base sm:text-lg truncate">
+            <Link to="/" className="hover:text-accent-green whitespace-nowrap">
               &gt;_ walid-ezzat
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden md:flex space-x-2 lg:space-x-4">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`relative px-3 py-1 transition-colors duration-200 ${isActive(
+                className={`relative px-2 lg:px-3 py-1 transition-colors duration-200 whitespace-nowrap ${isActive(
                   link.to
                 )}`}
               >
@@ -47,26 +47,26 @@ const Layout: React.FC = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <div className="md:hidden">
+          <div className="md:hidden flex-shrink-0">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-terminal-green focus:outline-none"
+              className="text-terminal-green focus:outline-none p-1"
               aria-label="Toggle navigation"
             >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
-          <div className="mt-4 flex flex-col space-y-2 md:hidden px-2">
+          <div className="mt-4 flex flex-col space-y-1 md:hidden px-2 pb-2">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setMenuOpen(false)}
-                className={`block w-full text-left px-4 py-2 rounded transition ${isActive(
+                className={`block w-full text-left px-3 py-2 rounded transition whitespace-nowrap ${isActive(
                   link.to
                 )}`}
               >
@@ -78,7 +78,7 @@ const Layout: React.FC = () => {
       </nav>
 
       {/* Page Content */}
-      <main className="p-4">
+      <main className="p-2 sm:p-4 w-full overflow-x-hidden">
         <Outlet />
       </main>
     </div>

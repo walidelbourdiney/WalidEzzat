@@ -97,16 +97,16 @@ const ContactForm: React.FC = () => {
     <div className="w-full max-w-xl mx-auto font-mono text-terminal-green flex flex-col items-center px-2 sm:px-4">
       <form
         onSubmit={handleSubmit}
-        className="w-full bg-terminal-dark-alt p-6 rounded-lg border border-terminal-green/40 flex flex-col gap-4"
+        className="w-full bg-terminal-dark-alt p-4 sm:p-6 rounded-lg border border-terminal-green/40 flex flex-col gap-3 sm:gap-4"
       >
         <label className="flex flex-col">
-          Name
+          <span className="text-sm sm:text-base">Name</span>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            className="mt-1 p-2 rounded bg-terminal-dark text-terminal-green border border-terminal-green/20 focus:outline-none focus:ring-2 focus:ring-terminal-green text-sm"
+            className="mt-1 p-2 rounded bg-terminal-dark text-terminal-green border border-terminal-green/20 focus:outline-none focus:ring-2 focus:ring-terminal-green text-sm w-full"
           />
           {errors.name && (
             <div className="text-red-400 text-xs mt-1">{errors.name}</div>
@@ -114,13 +114,13 @@ const ContactForm: React.FC = () => {
         </label>
 
         <label className="flex flex-col">
-          Email
+          <span className="text-sm sm:text-base">Email</span>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className="mt-1 p-2 rounded bg-terminal-dark text-terminal-green border border-terminal-green/20 focus:outline-none focus:ring-2 focus:ring-terminal-green text-sm"
+            className="mt-1 p-2 rounded bg-terminal-dark text-terminal-green border border-terminal-green/20 focus:outline-none focus:ring-2 focus:ring-terminal-green text-sm w-full"
           />
           {errors.email && (
             <div className="text-red-400 text-xs mt-1">{errors.email}</div>
@@ -128,13 +128,13 @@ const ContactForm: React.FC = () => {
         </label>
 
         <label className="flex flex-col">
-          Message
+          <span className="text-sm sm:text-base">Message</span>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleInputChange}
             rows={4}
-            className="mt-1 p-2 rounded bg-terminal-dark text-terminal-green border border-terminal-green/20 focus:outline-none focus:ring-2 focus:ring-terminal-green text-sm resize-vertical"
+            className="mt-1 p-2 rounded bg-terminal-dark text-terminal-green border border-terminal-green/20 focus:outline-none focus:ring-2 focus:ring-terminal-green text-sm resize-vertical w-full"
           />
           {errors.message && (
             <div className="text-red-400 text-xs mt-1">{errors.message}</div>
@@ -154,16 +154,16 @@ const ContactForm: React.FC = () => {
                 }
               : {}
           }
-          className="mt-2 px-4 py-2 rounded bg-terminal-green text-black font-bold shadow hover:bg-accent-green transition-colors duration-200 border border-terminal-green disabled:opacity-50 disabled:cursor-not-allowed"
+          className="mt-2 px-4 py-2 rounded bg-terminal-green text-black font-bold shadow hover:bg-accent-green transition-colors duration-200 border border-terminal-green disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
         >
           {submitting ? "$ sending..." : "$ send-message"}
         </motion.button>
       </form>
 
-      <div className="flex flex-wrap gap-6 mt-6 justify-center text-sm">
+      <div className="flex flex-wrap gap-4 sm:gap-6 mt-4 sm:mt-6 justify-center text-xs sm:text-sm">
         <a
           href="mailto:walidelbourdiney25@gmail.com"
-          className="underline text-accent-green"
+          className="underline text-accent-green hover:text-terminal-green transition-colors"
         >
           Email
         </a>
@@ -171,7 +171,7 @@ const ContactForm: React.FC = () => {
           href="https://www.linkedin.com/in/walid-ezzat/"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline text-accent-green"
+          className="underline text-accent-green hover:text-terminal-green transition-colors"
         >
           LinkedIn
         </a>
@@ -179,13 +179,13 @@ const ContactForm: React.FC = () => {
           href="https://github.com/walidelbourdiney"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline text-accent-green"
+          className="underline text-accent-green hover:text-terminal-green transition-colors"
         >
           GitHub
         </a>
       </div>
 
-      <div className="mt-6 text-accent-green text-center text-sm">
+      <div className="mt-4 sm:mt-6 text-accent-green text-center text-xs sm:text-sm break-words">
         git clone &lt;my-skills&gt; && npm install me
       </div>
     </div>
