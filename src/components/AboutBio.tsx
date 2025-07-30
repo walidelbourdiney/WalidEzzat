@@ -36,7 +36,7 @@ const AboutBio: React.FC = () => {
       {/* Bio Text */}
       <TypingAnimation
         lines={bioLines}
-        typingSpeed={30}
+        typingSpeed={50}
         className="text-terminal-green text-sm sm:text-base md:text-lg leading-relaxed font-mono max-w-full"
       />
 
