@@ -7,7 +7,7 @@ import cv from "../assets/Walid-Ezzat-CV-2025.pdf";
 const heroLines = [
   '"Good design solves problems. Great design tells a story."',
   "Hi, I'm Walid Ezzat an engineer by foundation, front-end developer by choice.",
-  "From technical blueprints to user interfaces — I design with clarity and build with care.",
+  "From technical blueprints to user interfaces. I design with clarity and build with care.",
   "My work blends precision with creativity to create meaningful user experiences.",
   "React and TypeScript handle the logic, Tailwind shapes the design, empathy guides the result.",
   "I code with intent, collaborate with purpose, and always aim for lasting impact.",
