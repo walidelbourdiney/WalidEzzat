@@ -38,6 +38,21 @@ const projects = [
     demo: "https://portal-sooty-pi.vercel.app/",
   },
   {
+    title: "Terminal-Inspired Portfolio",
+    description:
+      "A custom-built developer portfolio that blends terminal aesthetics with smooth UX. Built from scratch using React, TypeScript, Tailwind, and Framer Motion.",
+    tech: [
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Vite",
+      "Toast Notifications",
+    ],
+    github: "https://github.com/walidelbourdiney/WalidEzzat",
+    demo: "https://walid-ezzat.vercel.app/",
+  },
+  {
     title: "Chef Welly",
     description:
       "AI-powered recipe recommendation system using Hugging Face Mixtral model with markdown formatting.",
