@@ -1,61 +1,74 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export interface TypingAnimationProps {
   lines: string[];
   typingSpeed?: number; // ms per character
+  linePause?: number; // ms between lines
   className?: string;
 }
 
-const TypingAnimation: React.FC<TypingAnimationProps> = ({ lines, typingSpeed = 50, className }) => {
-  const [displayed, setDisplayed] = useState<string[]>(['']);
+const TypingAnimation: React.FC<TypingAnimationProps> = ({
+  lines,
+  typingSpeed = 50,
+  linePause = 600,
+  className = "",
+}) => {
+  const [displayed, setDisplayed] = useState<string[]>([""]);
   const [lineIdx, setLineIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
     if (lineIdx < lines.length) {
-      if (charIdx < lines[lineIdx].length) {
+      const currentLine = lines[lineIdx];
+      const currentChar = currentLine[charIdx];
+
+      if (charIdx < currentLine.length) {
+        const isPauseChar = [",", ".", "!", "?"].includes(currentChar);
+        const delay = isPauseChar ? typingSpeed * 5 : typingSpeed;
+
         const timeout = setTimeout(() => {
           setDisplayed((prev) => {
-            const newLines = [...prev];
-            newLines[lineIdx] = (newLines[lineIdx] || '') + lines[lineIdx][charIdx];
-            return newLines;
+            const updated = [...prev];
+            updated[lineIdx] = (updated[lineIdx] || "") + currentChar;
+            return updated;
           });
           setCharIdx((c) => c + 1);
-        }, typingSpeed);
+        }, delay);
+
         return () => clearTimeout(timeout);
       } else {
-        // Move to next line
         if (lineIdx < lines.length - 1) {
-          setTimeout(() => {
-            setDisplayed((prev) => [...prev, '']);
+          const timeout = setTimeout(() => {
+            setDisplayed((prev) => [...prev, ""]);
             setLineIdx((l) => l + 1);
             setCharIdx(0);
-          }, typingSpeed * 10);
+          }, linePause);
+          return () => clearTimeout(timeout);
         } else {
           setDone(true);
         }
       }
     }
-  }, [charIdx, lineIdx, lines, typingSpeed]);
+  }, [charIdx, lineIdx, lines, typingSpeed, linePause]);
 
   return (
-    <div className={`whitespace-pre-wrap font-mono break-words ${className || ''}`.trim()}>
+    <div
+      className={`whitespace-pre-wrap font-mono break-words ${className}`.trim()}
+    >
       {displayed.map((line, i) => (
         <div key={i} className="relative flex items-start">
-          <span className="glitch break-words" data-text={line}>
-            {line}
-          </span>
+          <span className="break-words">{line}</span>
           {i === displayed.length - 1 && !done && (
             <AnimatePresence>
               <motion.span
                 key="cursor"
-                className="inline-block w-2 sm:w-3 h-4 sm:h-5 bg-terminal-green ml-1 flex-shrink-0"
+                className="ml-1 w-[2px] h-[1em] bg-terminal-green animate-pulse flex-shrink-0"
                 initial={{ opacity: 1 }}
-                animate={{ opacity: [1, 0.2, 1] }}
+                animate={{ opacity: [1, 0.3, 1] }}
                 exit={{ opacity: 0 }}
-                transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+                transition={{ repeat: Infinity, duration: 1 }}
                 aria-hidden="true"
               />
             </AnimatePresence>

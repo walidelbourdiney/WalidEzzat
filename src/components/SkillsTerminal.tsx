@@ -43,6 +43,7 @@ const skills = [
       { name: "Vite", level: "Advanced" },
       { name: "Git / GitHub", level: "Advanced" },
       { name: "DevTools & Debugging", level: "Intermediate" },
+      { name: "Vibe Coding", level: "Intermediate" },
       { name: "i18next / RTL", level: "Intermediate" },
       { name: "Formik", level: "Intermediate" },
       { name: "Figma", level: "Beginner" },
