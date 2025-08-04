@@ -5,12 +5,9 @@ import { motion } from "framer-motion";
 import cv from "../assets/Walid-Ezzat-CV-2025.pdf";
 
 const heroLines = [
-  '"Good design solves problems. Great design tells a story."',
-  "Hi, I'm Walid Ezzat an engineer by foundation, front-end developer by choice.",
-  "From technical blueprints to user interfaces. I design with clarity and build with care.",
-  // "My work blends precision with creativity to create meaningful user experiences.",
-  "React and TypeScript handle the logic, Tailwind shapes the design, empathy guides the result.",
-  "I code with intent, collaborate with purpose, and always aim for lasting impact.",
+  "I build joyful, story-driven interfaces with React and TypeScript.",
+  "My UIs feel alive, thoughtful, fast, and always user-first.",
+  "I code with intent, learn fast, and think beyond the obvious.",
 ];
 
 const Home: React.FC = () => {
@@ -35,15 +32,29 @@ const Home: React.FC = () => {
       />
       <TerminalWindow>
         <div className="flex flex-col items-center gap-4 sm:gap-6 w-full max-w-full">
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-terminal-green text-center"
+          >
+            Hi, I'm Walid Ezzat, an engineer by foundation. Front-end developer
+            by choice.
+          </motion.h1>
           <TypingAnimation
             lines={heroLines}
-            typingSpeed={40}
+            typingSpeed={50}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-terminal-green text-center leading-relaxed"
           />
           <motion.div
             animate={{ opacity: 1, x: 0, scale: 1 }}
             initial={{ opacity: 0, x: "-100vw", scale: 0.5 }}
-            transition={{ delay: 25, duration: 1 }}
+            transition={{
+              delay: 15,
+              duration: 1,
+              type: "spring",
+              stiffness: 50,
+            }}
             className="flex flex-col items-center gap-4 sm:gap-6 mt-6 sm:mt-8"
           >
             <motion.a
