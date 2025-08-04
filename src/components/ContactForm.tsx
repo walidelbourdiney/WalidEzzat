@@ -51,23 +51,20 @@ const ContactForm: React.FC = () => {
       form.append("message", formData.message);
       form.append("_captcha", "false");
       form.append("_template", "box");
-      form.append("_next", "https://walid-ezzat-portfolio.vercel.app/thanks");
 
       const response = await fetch(
-        "https://formsubmit.co/walidelbourdiney25@gmail.com",
+        "https://formsubmit.co/ajax/walidelbourdiney25@gmail.com",
         {
           method: "POST",
           body: form,
         }
       );
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         toast.success("Message sent successfully!", { id: "sending" });
         setFormData({ name: "", email: "", message: "" });
-        setTimeout(() => {
-          window.location.href =
-            "https://walid-ezzat-portfolio.vercel.app/thanks";
-        }, 1500);
       } else {
         toast.error("Failed to send message. Please try again.", {
           id: "sending",
