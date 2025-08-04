@@ -32,6 +32,7 @@ const Home: React.FC = () => {
       />
       <TerminalWindow>
         <div className="flex flex-col items-center gap-4 sm:gap-6 w-full max-w-full">
+          {/* Animated title */}
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
