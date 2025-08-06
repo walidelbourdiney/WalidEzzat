@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 import cv from "../assets/Walid-Ezzat-CV-2025.pdf";
 
 const heroLines = [
-  "I build joyful, story-driven interfaces with React and TypeScript.",
-  "My UIs feel alive, thoughtful, fast, and always user-first.",
-  "I code with intent, learn fast, and think beyond the obvious.",
+  "I build performant React applications with TypeScript precision and engineering rigor.",
+  "Fast-learning developer who transforms complex problems into intuitive interfaces.",
 ];
 
 const Home: React.FC = () => {
@@ -51,7 +50,7 @@ const Home: React.FC = () => {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             initial={{ opacity: 0, x: "-100vw", scale: 0.5 }}
             transition={{
-              delay: 15,
+              delay: 10,
               duration: 1,
               type: "spring",
               stiffness: 50,
